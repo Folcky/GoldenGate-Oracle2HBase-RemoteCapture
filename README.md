@@ -172,13 +172,6 @@ set ename='so'
 where empno=1
 ```
 
-## Result - Target
-| EMPNO | ENAME | GG_TS               | GG_OP_TYPE | GG_SCN  | BEFOREAFTER |
-|-------|-------|---------------------|------------|---------|-------------|
-| 1     | ok    | 2018-10-11 11:19:15 | I          | 2064051 | A           |
-| 1     | ok    | 2018-10-11 11:19:16 | S          | 2064052 | A           |
-| 1     | ko    | 2018-10-11 11:19:16 | S          | 2064052 | B           |
-
 > hbase(main):005:0> scan 'TRANS_USER:TEST'  
 
 ## Result - Target
