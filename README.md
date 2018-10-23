@@ -133,7 +133,7 @@ TABLE trans_user.*;
 > **GGSCI (a3abfded7bc7) 2>** info extract pumpext, detail
 
 
-# 5. Oracle GoldenGate for Oracle - Configure replicat 
+# 5. Oracle GoldenGate for BigData - Configure replicat 
 
 ## Replicat configuration
 
