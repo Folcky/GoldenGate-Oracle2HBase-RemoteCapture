@@ -88,7 +88,7 @@ Successfully logged into database.
 
 # 4. Oracle GoldenGate for Oracle - Configure extract 
 
-## Extract configuration
+## 4.1. Extract configuration
 
 ### Connect as oracle to GoldenGate instance:
 > su oracle  
@@ -111,7 +111,7 @@ TABLE trans_user.test;
 > **GGSCI (a3abfded7bc7) 2>** START EXTRACT getExt  
 > **GGSCI (a3abfded7bc7) 2>** info extract getext, detail 
 
-## DataPump configuration
+## 4.2. DataPump configuration
 
 ### Connect as oracle to GoldenGate instance:
 > su oracle  
@@ -151,6 +151,6 @@ MAP trans_user.test, TARGET trans_user.test;
 ```
 
 ### Run GGSCI and registerreplicat params file:
-> **GGSCI (a3abfded7bc7) 2>** ADD REPLICAT putext, EXTTRAIL ./dirdat/in
+> **GGSCI (a3abfded7bc7) 2>** ADD REPLICAT putext, EXTTRAIL ./dirdat/in  
 > **GGSCI (a3abfded7bc7) 2>** START REPLICAT putExt  
 > **GGSCI (a3abfded7bc7) 2>** info REPLICAT putext, detail 
