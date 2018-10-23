@@ -1,0 +1,40 @@
+FROM ubuntu
+RUN apt-get update
+
+# Install Java8
+RUN apt-get install -y software-properties-common vim unzip
+RUN add-apt-repository -y ppa:webupd8team/java
+RUN apt-get update
+RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+RUN echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+RUN apt-get install -y oracle-java8-installer
+
+# Install build tools
+RUN apt-get install -y git
+RUN apt-get install -y maven
+
+# Install HBase
+COPY ./data/hbase_ogg/hbase-1.2.0-bin.tar.gz /opt/
+RUN cd /opt/ && mv hbase-1.2.0-bin.tar.gz hbase.tar.gz && tar -xzf hbase.tar.gz
+
+ENV PATH /opt/hbase-1.2.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/ogg/oggbd:/usr/lib/jvm/java-8-oracle
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+ENV LD_LIBRARY_PATH /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server
+ENV HBASE_HOME /opt/hbase-1.2.0
+
+# ZooKeeper
+EXPOSE 2181
+
+# HMaster
+EXPOSE 60000
+
+# HMaster Web
+EXPOSE 60010
+
+# RegionServer
+EXPOSE 60020
+
+# RegionServer Web
+EXPOSE 60030
+
+CMD ["./opt/hbase-1.2.0/bin/hbase", "master", "start"]
