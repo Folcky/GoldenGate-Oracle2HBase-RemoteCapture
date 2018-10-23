@@ -1,6 +1,8 @@
 # GoldenGate-Oracle2HBase-RemoteCapture
 Oracle DB Source -> ORacle GoldenGate for Oracle-> [Oracle GoldenGate for Bigdata + Apache HBase 1.2.0]
 
+![Alt text](Diagram_HBase.png?raw=true "Diagram") 
+
 # 0. Prerequisites
 
 ## Oracle Source DB credentials
