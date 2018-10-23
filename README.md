@@ -154,3 +154,54 @@ MAP trans_user.test, TARGET trans_user.test;
 > **GGSCI (a3abfded7bc7) 2>** ADD REPLICAT putext, EXTTRAIL ./dirdat/in  
 > **GGSCI (a3abfded7bc7) 2>** START REPLICAT putExt  
 > **GGSCI (a3abfded7bc7) 2>** info REPLICAT putext, detail 
+
+
+# 6. Oracle GoldenGate - Emulate replication
+
+## Insert - Source
+```sql
+insert into trans_user.test(empno, ename) 
+select max(empno)+1, max(ename) from trans_user.test;
+commit;
+```
+
+## Update - Source
+```sql
+update trans_user.test
+set ename='so'
+where empno=1
+```
+
+## Result - Target
+| EMPNO | ENAME | GG_TS               | GG_OP_TYPE | GG_SCN  | BEFOREAFTER |
+|-------|-------|---------------------|------------|---------|-------------|
+| 1     | ok    | 2018-10-11 11:19:15 | I          | 2064051 | A           |
+| 1     | ok    | 2018-10-11 11:19:16 | S          | 2064052 | A           |
+| 1     | ko    | 2018-10-11 11:19:16 | S          | 2064052 | B           |
+
+> hbase(main):005:0> scan 'TRANS_USER:TEST'  
+
+## Result - Target
+
+| ROW   | COLUMN+CELL   |
+|-------|---------------|
+| 28    | column=cf:EMPNO, timestamp=1539936521304, value=28 |
+| 28    | column=cf:ENAME, timestamp=1539936521304, value=28 |
+| 29    | column=cf:EMPNO, timestamp=1539936521304, value=so |
+| 29    | column=cf:ENAME, timestamp=1539936521304, value=29 |
+| ..    | column=cf:ENAME, timestamp=............., value=.. |
+| ..    | column=cf:EMPNO, timestamp=............., value=.. |
+                                                                                
+> 5 row(s) in 0.1110 seconds
+
+
+# Advanced topics
+
+## Case 1. Using different version of Oracle for source and target
+Read about DEFGEN utility
+
+## Case 2. Automate Target schema creation
+I did'nt find any ready solution
+
+## Case 3. Downstream configuration
+Used for decreasing source performance impact
