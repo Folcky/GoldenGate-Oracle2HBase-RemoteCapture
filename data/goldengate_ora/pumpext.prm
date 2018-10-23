@@ -1,0 +1,5 @@
+EXTRACT pumpext
+RMTHOST hbase, MGRPORT 7801, TIMEOUT 30
+RMTTRAIL /ogg/oggbd/dirdat/in
+PASSTHRU
+TABLE trans_user.*;
