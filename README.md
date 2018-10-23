@@ -150,8 +150,7 @@ GROUPTRANSOPS 10000
 MAP trans_user.test, TARGET trans_user.test;
 ```
 
-### Run GGSCI and register&start extract params file:
-> **GGSCI (a3abfded7bc7) 2>** ADD ??????????????
-> **GGSCI (a3abfded7bc7) 2>** ADD EXTTRAIL ??????????????
+### Run GGSCI and registerreplicat params file:
+> **GGSCI (a3abfded7bc7) 2>** ADD REPLICAT putext, EXTTRAIL ./dirdat/in
 > **GGSCI (a3abfded7bc7) 2>** START REPLICAT putExt  
 > **GGSCI (a3abfded7bc7) 2>** info REPLICAT putext, detail 
