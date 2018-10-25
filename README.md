@@ -3,6 +3,10 @@ Oracle DB Source -> ORacle GoldenGate for Oracle-> [Oracle GoldenGate for Bigdat
 
 ![Alt text](Diagram_HBase.png?raw=true "Diagram") 
 
+## Useful links
+GoldenGate for Oracle in docker  
+https://github.com/oracle/docker-images/tree/master/OracleGoldenGate  
+
 # 0. Prerequisites
 
 ## Oracle Source DB credentials
