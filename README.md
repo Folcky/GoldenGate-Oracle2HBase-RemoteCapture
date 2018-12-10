@@ -131,10 +131,10 @@ TABLE trans_user.*;
 ```
 
 ### Run GGSCI and register&start extract params file:
-> **GGSCI (a3abfded7bc7) 2>** add extract pumpext, EXTTRAILSOURCE ./dirdat/in, begin now
-> **GGSCI (a3abfded7bc7) 2>** add rmttrail /ogg/oggbd/dirdat/in, extract pumpext, megabytes 50
-> **GGSCI (a3abfded7bc7) 2>** start pumpext
-> **GGSCI (a3abfded7bc7) 2>** info extract pumpext, detail
+> **GGSCI (a3abfded7bc7) 2>** add extract pumpext, EXTTRAILSOURCE ./dirdat/in, begin now  
+> **GGSCI (a3abfded7bc7) 2>** add rmttrail /ogg/oggbd/dirdat/in, extract pumpext, megabytes 50  
+> **GGSCI (a3abfded7bc7) 2>** start pumpext  
+> **GGSCI (a3abfded7bc7) 2>** info extract pumpext, detail  
 
 
 # 5. Oracle GoldenGate for BigData - Configure replicat 
@@ -147,11 +147,11 @@ TABLE trans_user.*;
 ### Run GGSCI and edit extract params file(e.g. VIM will be runned):
 > **GGSCI (a3abfded7bc7) 2>** edit params putExt  
 ```
-REPLICAT putext
-TARGETDB LIBFILE libggjava.so SET property=dirprm/hbase.props
-REPORTCOUNT EVERY 1 MINUTES, RATE
-GROUPTRANSOPS 10000
-MAP trans_user.test, TARGET trans_user.test;
+REPLICAT putext  
+TARGETDB LIBFILE libggjava.so SET property=dirprm/hbase.props  
+REPORTCOUNT EVERY 1 MINUTES, RATE  
+GROUPTRANSOPS 10000  
+MAP trans_user.test, TARGET trans_user.test;  
 ```
 
 ### Run GGSCI and registerreplicat params file:
